@@ -15,11 +15,17 @@ module vsdbabysoc (
    wire CLK;
    wire [9:0] RV_TO_DAC;
 
-   rvmyth core (
-      .OUT(RV_TO_DAC),
-      .CLK(CLK),
-      .reset(reset)
-   );
+    counter uut (
+        .clk(CLK),
+        .reset(reset),
+        .count(RV_TO_DAC)
+    );
+    
+   // rvmyth core (
+   //    .OUT(RV_TO_DAC),
+   //    .CLK(CLK),
+   //    .reset(reset)
+   // );
 
    avsdpll pll (
       .CLK(CLK),
